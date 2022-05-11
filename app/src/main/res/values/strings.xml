@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">KotlinPractice</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="attendance">Attendance</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="register">Register</string>
+    <string name="title_activity_profile">ProfileActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="username">Username</string>
+    <string name="google_signup">google signUp</string>
+    <string name="your_web_client_id">33063949530-4efevte3icqat94natbe6jalu8cjk48j.apps.googleusercontent.com</string>
+    <string name="dashboard">DashBoard</string>
+    <string name="logout">Logout</string>
+    <string name="todo">TODO</string>
+    <string name="settings">Settings</string>
+    <string name="your_classes">Your Classes</string>
+    <string name="add_class">add_Class</string>
+    <string name="Add_Profile">AddProfile</string>
+    <string name="class_name">Class Name</string>
+    <string name="class_time">Class Time</string>
+    <string name="create_class">Create Class</string>
+
+</resources>
