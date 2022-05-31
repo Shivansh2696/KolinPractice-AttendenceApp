@@ -37,7 +37,6 @@ class BatchRecyclerAdapter :RecyclerView.Adapter<MyViewHolder>() {
         }
     }
 }
-
 class MyViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
     var classname: TextView = itemView.findViewById(R.id.ClassName)
     var classTime: TextView = itemView.findViewById(R.id.ClassTime)

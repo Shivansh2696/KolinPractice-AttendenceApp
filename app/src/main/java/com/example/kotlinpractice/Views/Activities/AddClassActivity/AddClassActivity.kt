@@ -11,6 +11,7 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import com.androidlover5842.androidUtils.Validator.StringValidator
 import com.example.kotlinpractice.Dialog.ChoosePictureDialog
 import com.example.kotlinpractice.Model.BaseModels.BatchDetails
 import com.example.kotlinpractice.Utils
@@ -57,6 +58,11 @@ class AddClassActivity : AppCompatActivity() {
     private fun validate() : Boolean{
         className = getEditableText(binding.etClassName)
         classTime = getEditableText(binding.etClassTime)
+        val isNameEmpty:Boolean=StringValidator
+            .getValidator(binding.etClassName.text.toString()).addRule{it.length<10}
+            .doOnEmptyOrRuleFailed{ Toast.makeText(this,"Class Name Is Required",Toast.LENGTH_SHORT).show()}
+            .doOnRulePassed{}
+            .toBool()
         return when {
             className.isEmpty() -> {
                 Toast.makeText(this,"Class Name Is Required",Toast.LENGTH_SHORT).show()
@@ -102,6 +108,7 @@ class AddClassActivity : AppCompatActivity() {
                 val bitmapImage = bundle!!["data"] as Bitmap?
                 binding.ProfilePhoto.setImageBitmap(bitmapImage)
             }
+
         }
     }
 

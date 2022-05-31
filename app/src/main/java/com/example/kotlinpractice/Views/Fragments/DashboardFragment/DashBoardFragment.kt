@@ -20,7 +20,6 @@ class DashBoardFragment : Fragment() {
     private lateinit var viewModel: DashboardFragmentViewModel
     private lateinit var recyclerView : RecyclerView
     private var adapter = BatchRecyclerAdapter()
-    private var batchList :List<BatchDetails> = arrayListOf()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding =  FragmentDashBoardBinding.inflate(inflater, container, false)
@@ -36,9 +35,7 @@ class DashBoardFragment : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.adapter = adapter
 
-        viewModel.getBatchLiveDataList().observe(viewLifecycleOwner){
-            adapter.setList(it)
-        }
+        viewModel.getBatchLiveDataList().observe(viewLifecycleOwner){ adapter.setList(it) }
 
     }
 

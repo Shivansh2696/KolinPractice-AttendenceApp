@@ -12,12 +12,9 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.kotlinpractice.databinding.DailogProfilePictureBinding
 
-class ChoosePictureDialog : Dialog{
+class ChoosePictureDialog(private var activity: Activity) : Dialog(activity) {
     private lateinit var binding : DailogProfilePictureBinding
-    private lateinit var activity: Activity
-    constructor(activity: Activity) : super(activity)
-    {
-        this.activity = activity
+    init {
         setCancelable(false)
     }
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,11 +29,7 @@ class ChoosePictureDialog : Dialog{
         }
 
         // When Clicked On Gallery
-        binding.ImageGallery.setOnClickListener {
-            val pickPhoto = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-            activity.startActivityIfNeeded(pickPhoto, 103)
-            dismiss()
-        }
+        binding.ImageGallery.setOnClickListener {askStoragePerssmission() }
     }
 
     private fun askCameraPermission() {
@@ -47,8 +40,21 @@ class ChoosePictureDialog : Dialog{
             openCamera()
         }
     }
+    private fun askStoragePerssmission() {
+        if (ContextCompat.checkSelfPermission(context, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(activity,
+                arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE), 104)
+        } else {
+            openGallery()
+        }
+    }
 
-    @SuppressLint("QueryPermissionsNeeded")
+    private fun openGallery(){
+        val pickPhoto = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+        activity.startActivityForResult(pickPhoto, 103)
+        dismiss()
+    }
+
     private fun openCamera() {
         val camera = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
         activity.startActivityForResult(camera, 102)
